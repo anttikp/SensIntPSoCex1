@@ -1,0 +1,122 @@
+ 0000                   cpu LMM
+                        .module main.c
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+                        .area lit(rom, con, rel, lit)
+ 0000           L2:
+ 0000 50536F43204C434400        .byte 'P,'S,'o,'C,32,'L,'C,'D,0
+                        .area text(rom, con, rel)
+ 0000                   .dbfile ./main.c
+ 0000                   .dbfile C:\Users\anttikp\DOCUME~1\PSOCDE~1.4PR\PDPROJ~2\PDPROJ~1\main.c
+ 0000                   .dbfunc e main _main fV
+ 0000           ;         theStr -> X+0
+ 0000           _main::
+ 0000                   .dbline -1
+ 0000 10                push X
+ 0001 4F                mov X,SP
+ 0002 3809              add SP,9
+ 0004                   .dbline 10
+ 0004           ; //----------------------------------------------------------------------------
+ 0004           ; // C main line
+ 0004           ; //----------------------------------------------------------------------------
+ 0004           ; 
+ 0004           ; #include <m8c.h>        // part specific constants and macros
+ 0004           ; #include "PSoCAPI.h"    // PSoC API definitions for all User Modules
+ 0004           ; 
+ 0004           ; 
+ 0004           ; void main(void)
+ 0004           ; {
+ 0004                   .dbline 11
+ 0004           ;    char theStr[] = "PSoC LCD";   // Define RAM string
+ 0004 62D000            mov REG[0xd0],>__r0
+ 0007 550000            mov [__r1],<L2
+ 000A 550000            mov [__r0],>L2
+ 000D 5A00              mov [__r3],X
+ 000F 62D507            mov REG[0xd5],7
+ 0012 10                push X
+ 0013 550000            mov [__rX],0
+ 0016 5100              mov A,[__r0]
+ 0018 5800              mov X,[__r1]
+ 001A           X1:
+ 001A 08                push A
+ 001B 28                romx
+ 001C 62D000            mov REG[0xd0],>__r0
+ 001F 3F00              mvi [__r3],A
+ 0021 18                pop A
+ 0022 75                inc X
+ 0023 0900              adc A,0
+ 0025 7600              inc [__rX]
+ 0027 3C0009            cmp [__rX],9
+ 002A BFEF              jnz X1
+ 002C                   .dbline 13
+ 002C           ; 
+ 002C           ;       LCD_Start();                  // Initialize LCD
+ 002C 7C0000            xcall _LCD_Start
+ 002F                   .dbline 14
+ 002F           ;    LCD_Position(0,5);            // Place LCD cursor at row 0, col 5.
+ 002F 5705              mov X,5
+ 0031 5000              mov A,0
+ 0033 7C0000            xcall _LCD_Position
+ 0036 20                pop X
+ 0037                   .dbline 15
+ 0037           ;    LCD_PrString(theStr);         // Print "PSoC LCD" on the LCD
+ 0037 62D000            mov REG[0xd0],>__r0
+ 003A 10                push X
+ 003B 5007              mov A,7
+ 003D 08                push A
+ 003E 18                pop A
+ 003F 7C0000            xcall _LCD_PrString
+ 0042 20                pop X
+ 0043                   .dbline 17
+ 0043           ; 
+ 0043           ;       M8C_EnableGInt ; // Uncomment this line to enable Global Interrupts
+ 0043 7101                      or  F, 01h
+ 0045           
+ 0045                   .dbline 19
+ 0045           ; 
+ 0045           ;       SleepTimer_Start();
+ 0045 10                push X
+ 0046 7C0000            xcall _SleepTimer_Start
+ 0049                   .dbline 20
+ 0049           ;    SleepTimer_EnableInt();                    
+ 0049 7C0000            xcall _SleepTimer_EnableInt
+ 004C                   .dbline 22
+ 004C           ; 
+ 004C           ;    LED_Start();
+ 004C 7C0000            xcall _LED_Start
+ 004F                   .dbline 24
+ 004F           ; 
+ 004F           ;    LED_Switch(1);         // Turn on LED
+ 004F 5001              mov A,1
+ 0051 7C0000            xcall _LED_Switch
+ 0054 20                pop X
+ 0055 800D              xjmp L4
+ 0057           L3:
+ 0057                   .dbline 26
+ 0057           ; 
+ 0057           ;    while(1) {
+ 0057                   .dbline 27
+ 0057           ;     LED_Invert();       // Flash LED 
+ 0057 10                push X
+ 0058 7C0000            xcall _LED_Invert
+ 005B                   .dbline 28
+ 005B           ;       SleepTimer_SyncWait(1, SleepTimer_WAIT_RELOAD);
+ 005B 5700              mov X,0
+ 005D 5001              mov A,1
+ 005F 7C0000            xcall _SleepTimer_SyncWait
+ 0062 20                pop X
+ 0063                   .dbline 30
+ 0063           ; 
+ 0063           ; }
+ 0063           L4:
+ 0063                   .dbline 26
+ 0063 8FF3              xjmp L3
+ 0065           X0:
+ 0065                   .dbline -2
+ 0065           L1:
+ 0065 38F7              add SP,-9
+ 0067 20                pop X
+ 0068                   .dbline 0 ; func end
+ 0068 8FFF              jmp .
+ 006A                   .dbsym l theStr 0 A[9:9]c
+ 006A                   .dbend

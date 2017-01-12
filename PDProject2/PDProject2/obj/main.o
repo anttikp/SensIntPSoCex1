@@ -1,0 +1,63 @@
+XH
+H 2 areas E global symbols
+M main.c
+S _LED_Switch Ref0000
+S _LED_Invert Ref0000
+S _SleepTimer_EnableInt Ref0000
+S __r0 Ref0000
+S __r1 Ref0000
+S __r3 Ref0000
+S __rX Ref0000
+S _LCD_Start Ref0000
+S _LED_Start Ref0000
+S _SleepTimer_Start Ref0000
+S _LCD_PrString Ref0000
+S _LCD_Position Ref0000
+S _SleepTimer_SyncWait Ref0000
+A text size 6A flags 0
+dbfile ./main.c
+dbfile C:\Users\anttikp\DOCUME~1\PSOCDE~1.4PR\PDPROJ~2\PDPROJ~1\main.c
+dbfunc e main 0 fV
+dbsym l theStr 0 A[9:9]c
+dbline FFFFFFFF 0
+dbline A 4
+dbline B 4
+dbline D 2C
+dbline E 2F
+dbline F 37
+dbline 11 43
+dbline 13 45
+dbline 14 49
+dbline 16 4C
+dbline 18 4F
+dbline 1A 57
+dbline 1B 57
+dbline 1C 5B
+dbline 1E 63
+dbline 1A 63
+dbline FFFFFFFE 65
+dbline 0 68
+S _main Def0000
+A lit size 9 flags 1
+T 00 00 50 53 6F 43 20 4C 43 44 00
+R 00 00 00 01
+T 00 00 10 4F 38 09 62 D0 00 00 55 00 00 00 00 55
+R 00 00 00 00 43 08 00 03 03 0B 00 04 01 0D 00 01
+T 00 0B 00 00 00 00 5A 00 00 62 D5 07 10 55
+R 00 00 00 00 03 02 00 03 41 04 00 01 03 07 00 05
+T 00 14 00 00 00 51 00 00 58 00 00 08 28 62 D0
+R 00 00 00 00 03 02 00 06 03 06 00 03 03 09 00 04
+T 00 1E 00 00 3F 00 00 18 75 09 00 76 00 00 3C
+R 00 00 00 00 43 02 00 03 03 05 00 05 03 0C 00 06
+T 00 28 00 00 09 BF EF 7C 00 00 57 05 50 00 7C
+R 00 00 00 00 03 02 00 06 02 08 00 07
+T 00 34 00 00 20 62 D0 00 00 10 50 07 08 18 7C
+R 00 00 00 00 02 02 00 0B 43 07 00 03
+T 00 40 00 00 20 71 01 10 7C 00 00 7C 00 00 7C
+R 00 00 00 00 02 02 00 0A 02 09 00 09 02 0C 00 02
+T 00 4D 00 00 50 01 7C 00 00 20 80 0D 10 7C 00 00
+R 00 00 00 00 02 02 00 08 02 07 00 00 02 0E 00 01
+T 00 5B 57 00 50 01 7C 00 00 20 8F F3 38 F7 20 8F
+R 00 00 00 00 02 07 00 0C
+T 00 69 FF
+R 00 00 00 00
